@@ -4,9 +4,12 @@ import Slider from 'react-slick';
 function MySlideshow() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [images, setImages] = useState([
-    '/path/to/image1.jpg',
-    '/path/to/image2.jpg',
-    '/path/to/image3.jpg'
+    'https://img.freepik.com/free-photo/beautiful-strawberry-garden-sunrise-doi-ang-khang-chiang-mai-thailand_335224-762.jpg?w=740&t=st=1672327318~exp=1672327918~hmac=708b467d60011a0fab141f75dd1ca0da2aa1f3fe004d75c316a8260345876ddd',
+    '../assets/image/topfive/topfive_1.jpg',
+    '../assets/image/topfive/topfive_2.jpg',
+    '../assets/image/topfive/topfive_3.jpg',
+    '../assets/image/topfive/topfive_4.jpg',
+    '../assets/image/topfive/topfive_5.jpg'
   ]);
 
   useEffect(() => {
