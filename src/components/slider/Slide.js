@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slide.css";
 import SlideContainer from "./SlideContainer";
+import SliderContainer from "./SlideContainer";
 // import SlideContainer2 from "./SlideContainer";
 // import SlideContainer3 from "./SlideContainer";
 
@@ -51,24 +52,9 @@ export default class PauseOnHover extends Component {
     return (
       <div className="slide">
         <Slider {...settings}>
-          <div>
-            <div src={SlideContainer} alt="slider" />
-          </div>
-          <div>
-            <div src={SlideContainer} alt="slider" />
-          </div>
-          <div>
-            <div src={SlideContainer} alt="slider" />
-          </div>
-          <div>
-            <img src={SlideContainer} alt="slider" />
-          </div>
-          <div>
-            <img src={SlideContainer} alt="slider" />
-          </div>
-          <div>
-            <img src={SlideContainer} alt="slider" />
-          </div>
+          <div><SliderContainer/></div>
+          <div><SliderContainer/></div>
+          <div><SliderContainer/></div>
         </Slider>
       </div>
     );
