@@ -50,7 +50,7 @@ export default class PauseOnHover extends Component {
     //   );
     // }
     return (
-      <div className="slide">
+      <div className="slide" style={{ margin: '50px' }}>
         <Slider {...settings}>
           <div><SliderContainer/></div>
           <div><SliderContainer/></div>
