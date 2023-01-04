@@ -1,20 +1,9 @@
 import React from 'react';
 import { useRef } from 'react';
 // import Swiper from 'swiper';
-import Image from '../../assets/image/topfive/topfive_1.jpg';
 
 const SliderContainer = () => {
   const sliderRef = useRef(null);
-  // useEffect(() => {
-  //   new Swiper(sliderRef.current, {
-  //     // opsi Swiper di sini
-  //     autoplay: {
-  //       delay: 2500,
-  //       disableOnInteraction: false,
-  //     },
-  //     loop: true,
-  //   });
-  // }, []);
 
   return (
     <>
