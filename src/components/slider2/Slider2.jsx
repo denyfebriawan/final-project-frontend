@@ -17,6 +17,7 @@ import Card from '../Card';
 export default function Sliderss() {
   return (
     <>
+    <div className="container">
       <Swiper
         slidesPerView={3}
         spaceBetween={30}
@@ -115,6 +116,7 @@ export default function Sliderss() {
           />
         </SwiperSlide>
       </Swiper>
+      </div>
     </>
   );
 }

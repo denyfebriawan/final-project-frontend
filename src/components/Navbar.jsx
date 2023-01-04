@@ -7,7 +7,6 @@ import '../App.css';
 const Navbar = () => {
     return(
       <>
-        <div className="wrapper">
         <header>
           <nav>
             <div className="menu-icon">
@@ -26,21 +25,6 @@ const Navbar = () => {
             </div>
           </nav>
         </header>
-        {/* $(document).ready(function() {'{'}
-        $(".menu-icon").on("click", function() {'{'}
-        $("nav ul").toggleClass("showing");
-        {'}'});
-        {'}'});
-        // Scrolling Effect
-        $(window).on("scroll", function() {'{'}
-        if($(window).scrollTop()) {'{'}
-        $('nav').addClass('black');
-        {'}'}
-        else {'{'}
-        $('nav').removeClass('black');
-        {'}'}
-        {'}'}) */}
-      </div>
       </>
       
     )
