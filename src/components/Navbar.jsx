@@ -2,7 +2,6 @@
 import { Link, useLocation} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
-
 import React, { useEffect, useState } from 'react';
 
 function Navbar() {
@@ -36,9 +35,8 @@ function Navbar() {
   return (
     <>
       <header>
-        <nav style={navbarStyle}>
+        <nav style={navbarStyle } className="fixed-element">
           <div className="menu-icon">
-            <i className="fa fa-bars fa-2x" />
           </div>
           <div className="logo">
             LOGO
