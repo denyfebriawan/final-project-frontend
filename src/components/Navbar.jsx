@@ -35,8 +35,8 @@ function Navbar() {
   return (
     <>
       <header>
-        <nav style={navbarStyle } className="fixed-element">
-          <div className="menu-icon">
+        <nav style={navbarStyle } >
+          <div className="fixed-element">
           </div>
           <div className="logo">
             LOGO
@@ -44,7 +44,7 @@ function Navbar() {
           <div className="menu">
             <ul>
               <Link to={"#"}><li>Home</li></Link>
-              <Link to={"#"}><li>Detail Page</li></Link>
+              <Link to={"#"}><li>Destination Page</li></Link>
               <Link to={"#"}><li>Login</li></Link>
               <Link to={"#"}><li>Register</li></Link>
             </ul>

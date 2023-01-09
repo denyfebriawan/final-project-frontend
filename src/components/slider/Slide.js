@@ -20,9 +20,31 @@ export default class PauseOnHover extends Component {
     return (
       <div className="slide" style={{ margin: '100px' }}>
         <Slider {...settings}>
-          <div><SliderContainer/></div>
-          <div><SliderContainer/></div>
-          <div><SliderContainer/></div>
+          <SliderContainer
+            image="/path/to/image.jpg"
+            title="Card Title 1"
+            description="This is a description of the card ."
+          />
+          <SliderContainer
+            image="/path/to/image.jpg"
+            title="Card Title 2"
+            description="This is a description of the card ."
+          />
+          <SliderContainer
+            image="/path/to/image.jpg"
+            title="Card Title 3"
+            description="This is a description of the card ."
+          />
+          <SliderContainer
+            image="/path/to/image.jpg"
+            title="Card Title 4"
+            description="This is a description of the card ."
+          />
+          <SliderContainer
+            image="/path/to/image.jpg"
+            title="Card Title 5"
+            description="This is a description of the card ."
+          />
         </Slider>
       </div>
     );
