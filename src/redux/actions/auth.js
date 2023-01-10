@@ -9,8 +9,8 @@ import {
 
 import authService from '../../services/auth';
 
-export const register = (name, email, phone_number, password) => dispatch => {
-    return authService.register(name, email, phone_number, password).then(
+export const register = (name, email, password) => dispatch => {
+    return authService.register(name, email, password).then(
         response => {
             dispatch({
                 type: REGISTER_SUCCESS,

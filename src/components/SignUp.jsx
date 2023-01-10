@@ -13,6 +13,10 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../redux/actions/auth";
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
@@ -29,15 +33,51 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone, setPhone] = useState("");
+  const [success, setSuccess] = useState(false);
+
+  const { message } = useSelector((state) => state.message);
+
+  const dispatch = useDispatch();
+
+  const onChangeName = (e) => {
+    const name = e.target.value;
+    setName(name);
+  };
+  const onChangeEmail = (e) => {
+    const email = e.target.value;
+    setEmail(email);
+  };
+  const onChangePhone = (e) => {
+    const phone = e.target.value;
+    setPhone(phone);
+  };
+  const onChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      name: data.get("name"),
-      email: data.get("email"),
-      phone_number: data.get("phone_number"),
-      password: data.get("password"),
-    });
+
+    // const data = new FormData(event.currentTarget);
+    // console.log({
+    //   name: data.get("name"),
+    //   email: data.get("email"),
+    //   phone_number: data.get("phone_number"),
+    //   password: data.get("password"),
+    // });
+
+    dispatch(register(name, email, password))
+      .then(() => {
+        setSuccess(true);
+      })
+      .catch(() => {
+        setSuccess(false);
+      });
   };
 
   return (
@@ -74,13 +114,14 @@ export default function SignUp() {
               Sign in
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
-              <TextField margin="normal" required fullWidth id="name" label="Full Name" name="name" autoComplete="name" autoFocus />
+              <TextField margin="normal" required fullWidth id="name" label="Full Name" name="name" value={name} onChange={onChangeName} autoComplete="name" autoFocus />
 
-              <TextField margin="normal" required fullWidth id="email" label="Email Address" name="email" autoComplete="email" />
+              <TextField margin="normal" required fullWidth id="email" label="Email Address" name="email" value={email} onChange={onChangeEmail} autoComplete="email" />
 
-              <TextField margin="normal" required fullWidth id="phone_number" label="Phone Number" name="phone_number" autoComplete="phone_number" />
+              {/* <TextField margin="normal" required fullWidth id="phone_number" label="Phone Number" name="phone_number" value={phone} onChange={onChangePhone} autoComplete="phone_number" /> */}
 
-              <TextField margin="normal" required fullWidth name="password" label="Password" type="password" id="password" autoComplete="current-password" />
+              <TextField margin="normal" required fullWidth name="password" value={password} onChange={onChangePassword} label="Password" type="password" id="password" autoComplete="current-password" />
+
               <FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
               <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
                 Sign In
