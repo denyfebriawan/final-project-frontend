@@ -92,3 +92,8 @@ a {
     opacity: 0.9;
     text-decoration: none;
   }
+
+  .form-container a {
+    color: blue;
+    text-decoration: underline;
+  }

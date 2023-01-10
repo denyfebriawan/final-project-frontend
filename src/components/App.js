@@ -4,7 +4,6 @@ import "./css/App.css";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 
 import React, { useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,11 +12,32 @@ import { Routes, Route, Link, useLocation } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 
+import {logout} from "../redux/actions/auth"
+import {clearMessage} from "../redux/actions/message"
+
+
 function App() {
+
+  const {user : currentUser} = useSelector(state => state.auth)
+
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (['/login', '/register'].includes(location.pathname)) {
+      dispatch(clearMessage());
+    }
+  }, [dispatch, location])
+
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch])
+
+
   return (
     <>
       <Navbar bg="light" expand="lg">
-        <Container >
+        <Container>
           <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
