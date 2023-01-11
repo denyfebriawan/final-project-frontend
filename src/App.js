@@ -13,14 +13,36 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 
+import { useEffect, useCallback } from "react";
+
 import { Routes, Route, Link, useLocation } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import SignIn from "./components/SignIn";
+
+import { logout } from "./redux/actions/auth";
+import { clearMessage } from "./redux/actions/message";
+import { useDispatch, useSelector } from "react-redux";
 
 const pages = ["Products", "Pricing", "Blog", "Destionation"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (["/signin", "/signup"].includes(location.pathname)) {
+      dispatch(clearMessage());
+    }
+  }, [dispatch, location]);
+
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -118,8 +140,36 @@ function ResponsiveAppBar() {
                 </Button>
               ))}
             </Box>
-            <Button color="inherit"><Link style={{ color:'inherit', textDecoration:'none' }} to={'/signin'}>Sign In</Link></Button>
-            <Button color="inherit"><Link style={{ color:'inherit', textDecoration:'none' }} to={'/signup'}>Sign Up</Link></Button>
+
+            {currentUser ? (
+              <>
+              <Button color="inherit">
+                <Link style={{ color: "inherit", textDecoration: "none" }} to={"/signin"} onClick={handleLogout}>
+                  Log Out
+                </Link>
+              </Button>
+              <Button color="inherit">
+                <Link style={{ color: "inherit", textDecoration: "none" }} to={"/profile"}>
+                  {`${currentUser.data.name}`}
+                </Link>
+              </Button>
+              </>
+            ) : (
+              <>
+                <Button color="inherit">
+                  <Link style={{ color: "inherit", textDecoration: "none" }} to={"/signin"}>
+                    Sign In
+                  </Link>
+                </Button>
+
+                <Button color="inherit">
+                  <Link style={{ color: "inherit", textDecoration: "none" }} to={"/signup"}>
+                    Sign Up
+                  </Link>
+                </Button>
+              </>
+            )}
+
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Open settings">
                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
