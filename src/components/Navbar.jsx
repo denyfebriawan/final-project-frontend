@@ -1,10 +1,32 @@
 
-import { Link, useLocation} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, Link, useLocation } from "react-router-dom";
+import SignUp from "./components/SignUp";
+import SignIn from "./components/SignIn";
+import { logout } from "./redux/actions/auth";
+import { clearMessage } from "./redux/actions/message";
+import { useDispatch, useSelector } from "react-redux";
 
 function Navbar() {
+
+  const { user: currentUser } = useSelector((state) => state.auth);
+
+  const dispatch = useDispatch();
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (["/signin", "/signup"].includes(location.pathname)) {
+      dispatch(clearMessage());
+    }
+  }, [dispatch, location]);
+
+  const handleLogout = useCallback(() => {
+    dispatch(logout());
+  }, [dispatch]);
+
   const [navbarStyle, setNavbarStyle] = useState({
     backgroundColor: 'transparent',
     transition: 'background-color 0.5s ease'
@@ -45,8 +67,20 @@ function Navbar() {
             <ul>
               <Link to={"#"}><li>Home</li></Link>
               <Link to={"#"}><li>Destination Page</li></Link>
-              <Link to={"#"}><li>Login</li></Link>
-              <Link to={"#"}><li>Register</li></Link>
+
+              {currentUser ? (
+                <>
+                 <Link to={"/signin"} onClick={handleLogout}><li>Log Out</li></Link>
+              <Link to={"/"}><li>{`${currentUser.data.name}`}</li></Link>
+                </>
+              ) : (
+                <>
+<Link to={"/signin"}><li>Sign In</li></Link>
+              <Link to={"/signup"}><li>Sign Up</li></Link>
+                </>
+              )}
+             
+              
             </ul>
           </div>
         </nav>

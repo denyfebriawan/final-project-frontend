@@ -10,9 +10,12 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Routes>
-          <Route path="/" element={<Home />} />
+      <div>
+        <Routes>
+          <Route path="/signin" element={<SignIn />}></Route>
+          <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
+      </div>
       <Footer/>
     </>
   );
