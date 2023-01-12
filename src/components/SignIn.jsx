@@ -61,14 +61,15 @@ export default function SignIn() {
     setLoading(true);
 
     dispatch(login(email, password))
-      .then(() => {
-        event.preventDefault();
+      .then((e) => {
+        e.preventDefault();
         navigate("/profile");
       })
-      .catch(() => {
-        event.preventDefault();
+      .catch((ev) => {
         setLoading(false);
+        ev.preventDefault();
       });
+      
   };
 
   if (isLoggedIn) {

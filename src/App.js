@@ -23,7 +23,7 @@ import { logout } from "./redux/actions/auth";
 import { clearMessage } from "./redux/actions/message";
 import { useDispatch, useSelector } from "react-redux";
 
-const pages = ["Products", "Pricing", "Blog", "Destionation"];
+const pages = ["Products", "Pricing", "Blog", "Destination"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
 function ResponsiveAppBar() {

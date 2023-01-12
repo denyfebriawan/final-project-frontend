@@ -68,10 +68,12 @@ export default function SignUp() {
     event.preventDefault();
 
     dispatch(register(name, email, password))
-      .then(() => {
+      .then((e) => {
+        e.preventDefault();
         setSuccess(true);
       })
-      .catch(() => {
+      .catch((ev) => {
+        ev.preventDefault();
         setSuccess(false);
       });
   };
@@ -116,7 +118,7 @@ export default function SignUp() {
 
             {message && (<Alert severity={`${success ? "success" : "error"}`}>{message}</Alert>)}
 
-            { !success && (<Alert severity="error">{message}</Alert>)}
+           
 
             {!success && (
               <>
