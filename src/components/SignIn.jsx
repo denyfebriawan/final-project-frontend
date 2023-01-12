@@ -63,17 +63,16 @@ export default function SignIn() {
     dispatch(login(email, password))
       .then((e) => {
         e.preventDefault();
-        navigate("/profile");
+        navigate("/");
       })
-      .catch((ev) => {
+      .catch(() => {
         setLoading(false);
-        ev.preventDefault();
       });
       
   };
 
   if (isLoggedIn) {
-    return <Navigate to={"/profile"} />;
+    return <Navigate to={"/"} />;
   }
 
   return (

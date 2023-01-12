@@ -8,7 +8,7 @@ const Card = ({ image, title, description }) => {
 
   return (
     <div style={{ height: cardHeight, width: cardWidth }}>
-      <img src={image} style={{ height: imageHeight, width: imageWidth,}} className="cardTengah"/>
+      <img src={image} style={{ height: imageHeight, width: imageWidth,}} className="cardTengah" alt=''/>
       <h3>{title}</h3>
       <p>{description}</p>
     </div>
