@@ -5,10 +5,13 @@ import SliderAuto from "../components/slider/Slide";
 import Sliderss from "../components/slider2/Slider2";
 
 
-const Home = () => {
+const Home = (data) => {
+
+  const dest = data.name;
+
     return(
       <>
-         <SliderAuto/>
+         <SliderAuto name={dest}/>
          <div style={{ padding: '50px' }}></div>
          <Sliderss/>
          <div style={{ padding: '50px' }}></div>

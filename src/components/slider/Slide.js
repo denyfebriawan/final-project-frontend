@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slide.css";
 import SliderContainer from "./SlideContainer";
+import axios from "axios";
 
 export default class PauseOnHover extends Component {
   render() {
@@ -17,34 +18,22 @@ export default class PauseOnHover extends Component {
       pauseOnHover: true,
       arrows: false,
     };
+
+    const destination = this.props.name;
+    console.log(destination);
+
     return (
       <div className="slide" style={{ margin: '100px' }}>
         <Slider {...settings}>
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 1"
-            description="This is a description of the card ."
+          
+          {destination?.map(data => {
+            return <SliderContainer
+            image={`https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/${data.image}`}
+            title={data.title}
+            description={data.description}
+            key={data._id}
           />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 2"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 3"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 4"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 5"
-            description="This is a description of the card ."
-          />
+          })}
         </Slider>
       </div>
     );
