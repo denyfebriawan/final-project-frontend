@@ -73,6 +73,9 @@ function Navbar() {
                   <Link to={"/"}>
                     <li>{`${currentUser.data.name}`}</li>
                   </Link>
+                  <Link to={"/profile"}>
+                    <li>Profile</li>
+                  </Link>
                 </>
               ) : (
                 <>

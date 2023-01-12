@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import SignIn from './components/SignIn';
 import SignUp from './components/SignUp';
 import axios from 'axios';
+import Profile from './components/Profile';
 
 function App() {
   const [data, setData] = useState([]);
@@ -28,13 +29,12 @@ function App() {
   return (
     <>
       <Navbar/>
-      <div>
         <Routes>
           <Route path='/' element={<Home name={data}/>}/>
+          <Route path="/profile" element={<Profile />}></Route>
           <Route path="/signin" element={<SignIn />}></Route>
           <Route path="/signup" element={<SignUp />}></Route>
         </Routes>
-      </div>
       <Footer/>
     </>
   );

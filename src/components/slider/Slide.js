@@ -1,10 +1,9 @@
-import React, { Component, useEffect, useState } from "react";
+import React, { Component } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slide.css";
 import SliderContainer from "./SlideContainer";
-import axios from "axios";
 
 export default class PauseOnHover extends Component {
   render() {
