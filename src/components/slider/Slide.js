@@ -1,52 +1,53 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./slide.css";
 import SliderContainer from "./SlideContainer";
+import Axios from "axios";
 
-export default class PauseOnHover extends Component {
-  render() {
-    var settings = {
-      dots: true,
-      infinite: true,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      pauseOnHover: true,
-      arrows: false,
-    };
-    return (
-      <div className="slide" style={{ margin: '100px' }}>
-        <Slider {...settings}>
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 1"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 2"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 3"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 4"
-            description="This is a description of the card ."
-          />
-          <SliderContainer
-            image="/path/to/image.jpg"
-            title="Card Title 5"
-            description="This is a description of the card ."
-          />
-        </Slider>
-      </div>
-    );
-  }
+const API_URL = 'https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/v1/destination/posts';
+
+const PauseOnHover = () => {
+
+const [datas, setData] = useState([]);
+
+useEffect(() => {
+Axios.get(API_URL)
+.then(result => {
+const responseAPI = result.data;
+setData(responseAPI.data);
+})
+.catch(err => {
+console.log('Error',err);
+})
+},[])
+
+var settings = {
+dots: true,
+infinite: true,
+slidesToShow: 1,
+slidesToScroll: 1,
+autoplay: true,
+autoplaySpeed: 3000,
+pauseOnHover: true,
+arrows: false,
+};
+
+return (
+
+<div className="slide" style={{ margin: '100px' }}>
+<Slider {...settings}>
+{datas.map((d) => {
+return <SliderContainer
+key={d._id}
+image={`https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/${d.image}`}
+title={d.title}
+description={d.description}/>
+})}
+</Slider>
+</div>
+);
 }
+
+export default PauseOnHover;

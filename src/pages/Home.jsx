@@ -6,8 +6,8 @@ import '../App.css';
 import SliderAuto from "../components/slider/Slide";
 import Sliderss from "../components/slider2/Slider2";
 
-
 const Home = () => {
+  
     return(
       <>
          <SliderAuto/>

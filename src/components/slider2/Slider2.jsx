@@ -1,122 +1,59 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
+import Axios from 'axios';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-
 import "./slider2.css";
 // import required modules
 import { Pagination, Navigation } from "swiper";
-
 // import card
 import Card from '../Card';
 
-export default function Sliderss() {
+const API_URL = 'https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/v1/destination/posts';
+
+const Sliderss = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+  Axios.get(API_URL)
+  .then(result => {
+  const responseAPI = result.data;
+  setData(responseAPI.data);
+  })
+  .catch(err => {
+  console.log('Error',err);
+  })
+  },[])
+
+  const settings = {
+    slidesPerView: 3,
+    spaceBetween: 30,
+    slidesPerGroup: 3,
+    loop: true,
+    loopFillGroupWithBlank: true,
+    pagination: {
+    clickable: true,
+    },
+    navigation: true,
+    modules: [Pagination, Navigation],
+    className: "mySwiper"
+    }
+  
   return (
-    <>
-    <div className="container">
-      <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        slidesPerGroup={3}
-        loop={true}
-        loopFillGroupWithBlank={true}
-        pagination={{
-          clickable: true,
-        }}
-        navigation={true}
-        modules={[Pagination, Navigation]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
+  <div className="container">
+    <Swiper {...settings}>
+      {data.map((item) => (
+        <SwiperSlide key={item._id}>
           <Card
-            image="/path/to/image.jpg"
-            title="Card Title 1"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 2"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 3"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 4"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 5"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 6"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 7"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 8"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 9"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 10"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 11"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <Card
-            image="/path/to/image.jpg"
-            title="Card Title 12"
-            description="This is a description of the card ."
-          />
-        </SwiperSlide>
-      </Swiper>
-      </div>
-    </>
-  );
+            image={`https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/${item.image}`}
+            title={item.title}
+            description={item.description}/>
+        </SwiperSlide>))}
+    </Swiper>
+  </div>
+);
 }
+  export default Sliderss;
