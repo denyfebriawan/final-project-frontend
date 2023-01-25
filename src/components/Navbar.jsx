@@ -11,6 +11,7 @@ function Navbar() {
   });
 
   useEffect(() => {
+    
     const handleScroll = () => {
       if (window.scrollY > 0) {
         setNavbarStyle({
@@ -34,8 +35,7 @@ function Navbar() {
 
   return (
     <>
-      <header>
-        <nav style={navbarStyle } >
+        <nav style={navbarStyle} className="sticky">
           <div className="fixed-element">
           </div>
           <div className="logo">
@@ -43,14 +43,13 @@ function Navbar() {
           </div>
           <div className="menu">
             <ul>
-              <Link to={"#"}><li>Home</li></Link>
-              <Link to={"#"}><li>Destination Page</li></Link>
+              <Link to={"/"}><li>Home</li></Link>
+              <Link to={"/SubPage"}><li>Destination Page</li></Link>
               <Link to={"#"}><li>Login</li></Link>
               <Link to={"#"}><li>Register</li></Link>
             </ul>
           </div>
         </nav>
-      </header>
     </>
   );
 }

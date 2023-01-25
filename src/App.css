@@ -152,14 +152,26 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   float: left;
   background-size: cover;
-  border-radius: 50%;
   background-color: #61dafb;
   margin: 15px;
   margin-bottom: 25px;
+}
+
+.bulat{
+  border-radius: 50%;
+  background-size: cover;
+  background-color: #61dafb;
+  width: 50px;
+  height: 50px;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  margin: 15px;
+  
 }
 
 .tengah {
@@ -170,7 +182,7 @@ nav ul li a {
 
 .fixed-element {
   position: fixed;
-  z-index: 999999999;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
@@ -180,4 +192,39 @@ nav ul li a {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 2;
+}
+
+.index2 {
+  z-index: 1;
+}
+
+.header1 {
+  background-size: cover;
+  width: 100%;
+  height: auto;
+}
+
+.center-text {
+  text-align: center; /* membuat teks berada di tengah */
+  color: blue; /* warna teks biru */
+  font-family: 'Arial', sans-serif; /* mengatur font */
+  margin-bottom: 20px; /* memberikan jarak 20px dari bawah */
+}
+
+.backgroundimage {
+  background-image: image;
+  background-size: cover;
+  background-position: center;
+  width: '100%';
+  height: 'calc(100vh / 2)';
+  display: 'flex';
+  justify-content: 'center';
+  align-items: 'center';
 }

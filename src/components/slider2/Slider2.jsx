@@ -15,43 +15,46 @@ import Card from '../Card';
 const API_URL = 'https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/v1/destination/posts';
 
 const Sliderss = () => {
-  const [data, setData] = useState([]);
+const [data, setData] = useState([]);
 
-  useEffect(() => {
-  Axios.get(API_URL)
-  .then(result => {
-  const responseAPI = result.data;
-  setData(responseAPI.data);
-  })
-  .catch(err => {
-  console.log('Error',err);
-  })
-  },[])
+useEffect(() => {
+Axios.get(API_URL)
+.then(result => {
+const responseAPI = result.data;
+setData(responseAPI.data);
+})
+.catch(err => {
+console.log('Error',err);
+})
+},[])
 
-  const settings = {
-    slidesPerView: 3,
-    spaceBetween: 30,
-    slidesPerGroup: 3,
-    loop: true,
-    loopFillGroupWithBlank: true,
-    pagination: {
-    clickable: true,
-    },
-    navigation: true,
-    modules: [Pagination, Navigation],
-    className: "mySwiper"
-    }
-  
-  return (
-  <div className="container">
-    <Swiper {...settings}>
+const settings = {
+slidesPerView: 3,
+spaceBetween: 30,
+slidesPerGroup: 3,
+loop: true,
+loopFillGroupWithBlank: true,
+pagination: {
+clickable: true,
+},
+navigation: true,
+modules: [Pagination, Navigation],
+className: "mySwiper",
+roundLengths: true
+}
+
+return (
+
+  <div className="container ">
+    <Swiper {...settings} className="index2">
       {data.map((item) => (
-        <SwiperSlide key={item._id}>
-          <Card
-            image={`https://final-project-backend-e55mlgzkc-lansilvester.vercel.app/${item.image}`}
-            title={item.title}
-            description={item.description}/>
-        </SwiperSlide>))}
+        <SwiperSlide className="rounded-slide" key={item._id}>
+        <Card
+          image={'https://img.freepik.com/free-photo/river-surrounded-by-forests-cloudy-sky-thuringia-germany_181624-30863.jpg?w=826&t=st=1674642474~exp=1674643074~hmac=000f741aae40b99fc71fdf05fec220ba53725440ea5d67b8998a3b1b26a8b359'}
+          title={item.title}
+          description={item.description}/>
+      </SwiperSlide>
+      ))}
     </Swiper>
   </div>
 );

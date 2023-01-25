@@ -2,15 +2,21 @@ import React from 'react';
 
 const Card = ({ image, title, description }) => {
   const cardHeight = window.innerHeight / 2;
-  const cardWidth = window.innerWidth * (3/10);
-  const imageHeight = cardHeight / 3;
-  const imageWidth = cardWidth * (8.9/10);
+  const cardWidth = window.innerWidth * (2.7/10);
 
   return (
-    <div style={{ height: cardHeight, width: cardWidth }}>
-      <img src={image} style={{ height: imageHeight, width: imageWidth,}} className="cardTengah"/>
-      <h3>{title}</h3>
-      <p>{description}</p>
+    <div style={{
+      height: cardHeight,
+      width: cardWidth,
+      backgroundImage: `url(${image})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      margin: '10px 0',
+      borderRadius: '10px'}}>
+      <h3 style={{ color: 'white', textAlign: 'center' }}>{title}</h3>
     </div>
   );
 };

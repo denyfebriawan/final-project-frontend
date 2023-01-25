@@ -39,3 +39,11 @@ body {
   height: 100%;
   object-fit: cover;
 }
+
+.index2 {
+  z-index: 1;
+}
+
+.rounded-slide {
+  border-radius: 10px;
+}

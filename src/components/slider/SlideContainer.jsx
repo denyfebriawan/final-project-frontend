@@ -1,25 +1,21 @@
 import React from 'react';
-import { useRef } from 'react';
-// import Swiper from 'swiper';
 
-
-const SliderContainer = ({ image, title, description }) => {
-  const sliderRef = useRef(null);
-
+const SliderContainer = ({ image, title }) => {
   return (
-    <>
-      <div style={{ width: '100%', height: 'calc(100vh / 2)', display: 'flex' }}>
-        <div style={{ width: 'calc(2/3 * 100%)' }}>
-          <img src={image} style={{ width: '100%', height: '100%' }} />
-        </div>
-        <div style={{ width: 'calc(1/3 * 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <div>
-            <h2 style={{ textAlign: 'center' }}>{title}</h2>
-            <p style={{ textAlign: 'center' }}>{description}</p>
-          </div>
-        </div>
+    <div style={{
+        backgroundImage: `url(${image})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        width: '100%',
+        height: 'calc(100vh / 2)',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+    }}>
+      {/* <div style={{ backgroundImage:`url(${image})`,backgroundSize: 'cover', backgroundPosition: 'center', width: '100%', height: 'calc(100vh / 2)', display: 'flex', justifyContent: 'center', alignItems: 'center'}}> */}
+        <h3 style={{ color: 'white', fontSize: '3em', textAlign: 'center' }}>{title}</h3>
       </div>
-    </>
+    // </div>
   );
 }
-export default SliderContainer
+export default SliderContainer;
