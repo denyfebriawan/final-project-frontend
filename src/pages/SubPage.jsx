@@ -1,7 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../App.css';
-import SliderAuto from "../components/slider/Slide";
 import Pagination from "../components/pagination/Pagination";
 import Header from '../components/Header';
 

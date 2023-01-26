@@ -8,7 +8,7 @@ const Footer = () => {
             <div className="wrapper">
                 <footer className="py-4 bg-dark">
                     <div className='container tengah'>
-                        <div className='bulat'><div className="lingkaran" style={{backgroundImage: 'url("https://cdn-icons-png.flaticon.com/512/739/739193.png")', backgroundSize: '100%'}} /></div>
+                        <div className="lingkaran" style={{backgroundImage: 'url("https://cdn-icons-png.flaticon.com/512/739/739193.png")', backgroundSize: '100%'}} />
                         <div className="lingkaran" style={{backgroundImage: 'url("https://cdn-icons-png.flaticon.com/512/2111/2111738.png")', backgroundSize: '100%'}} />
                         <div className="lingkaran" style={{backgroundImage: 'url("https://cdn-icons-png.flaticon.com/512/2175/2175193.png")', backgroundSize: '100%'}} />
                         <div className="lingkaran" style={{backgroundImage: 'url("https://cdn-icons-png.flaticon.com/512/542/542689.png")', backgroundSize: '100%'}} />
